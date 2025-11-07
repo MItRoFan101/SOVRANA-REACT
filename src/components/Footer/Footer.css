@@ -1,0 +1,115 @@
+/* components/Footer/Footer.css */
+.footer-custom {
+    background: #ffffff;
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0 1rem;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-dark);
+}
+
+.footer-tagline {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.footer-social {
+    display: flex;
+    align-items: center;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #4c75a3 0%, #2a5885 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.social-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 117, 163, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+.social-link svg {
+    flex-shrink: 0;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+}
+
+.footer-info {
+    text-align: center;
+}
+
+.footer-info p {
+    margin: 0.25rem 0;
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .footer-brand {
+        align-items: center;
+    }
+
+    .social-link {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-custom {
+        padding: 1.5rem 0 1rem;
+    }
+
+    .footer-content {
+        gap: 1rem;
+    }
+
+    .social-link {
+        width: 100%;
+        justify-content: center;
+    }
+}

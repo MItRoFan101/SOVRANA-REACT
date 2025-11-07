@@ -1,0 +1,48 @@
+.header-custom {
+    background: #ffffff;
+    padding: 0;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+/* Добавьте в конец Header.css */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-phone {
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.logout-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+}
+
+.login-btn {
+    min-width: 100px;
+}
+
+/* Адаптивность для пользовательской информации */
+@media (max-width: 768px) {
+    .user-info {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-end;
+    }
+
+    .user-phone {
+        font-size: 0.8rem;
+    }
+}

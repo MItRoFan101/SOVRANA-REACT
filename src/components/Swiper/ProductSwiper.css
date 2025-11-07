@@ -1,0 +1,326 @@
+.popular-swiper-container {
+    width: 100%;
+    padding: 30px 0 60px;
+    position: relative;
+}
+
+.popular-swiper {
+    width: 100%;
+    height: 480px;
+}
+
+.swiper-slide {
+    width: 320px;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0.7;
+    transform: scale(0.9);
+    filter: blur(1px);
+}
+
+.swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+    z-index: 2;
+}
+
+.swiper-slide-next,
+.swiper-slide-prev {
+    opacity: 0.9;
+    transform: scale(0.95);
+    filter: blur(0.5px);
+    z-index: 1;
+}
+
+.swiper-slide:not(.swiper-slide-active):not(.swiper-slide-next):not(.swiper-slide-prev) {
+    opacity: 0.4;
+}
+
+.swiper-card {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    transition: all 0.4s ease;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(214, 35, 0, 0.15);
+    background: white;
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+.swiper-card .product-card {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 16px;
+    box-shadow: none;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.swiper-card .product-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.swiper-card:hover .product-card {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(214, 35, 0, 0.25);
+}
+
+/* Специальные стили для карточек в слайдере */
+.swiper-card .product-image {
+    height: 180px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #ff4500 100%);
+    border-radius: 16px 16px 0 0;
+    margin-bottom: 0;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.swiper-card .product-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+    line-height: 1.3;
+    padding: 0 1.5rem;
+}
+
+.swiper-card .product-description {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    padding: 0 1.5rem;
+}
+
+.swiper-card .product-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    padding: 0 1.5rem;
+}
+
+.swiper-card .product-actions {
+    padding: 0 1.5rem 1.5rem;
+}
+
+.swiper-card .btn-add-to-cart {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #ff4500 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(214, 35, 0, 0.3);
+    width: 100%;
+}
+
+.swiper-card .btn-add-to-cart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(214, 35, 0, 0.4);
+    background: linear-gradient(135deg, #ff4500 0%, #ff6b4a 100%);
+}
+
+/* Навигационные кнопки */
+.swiper-button-prev,
+.swiper-button-next {
+    color: var(--primary-color);
+    background: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-top: -25px;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(214, 35, 0, 0.3);
+}
+
+.swiper-button-prev {
+    left: 20px;
+}
+
+.swiper-button-next {
+    right: 20px;
+}
+
+/* Пагинация */
+.swiper-pagination {
+    bottom: 20px !important;
+}
+
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: #e6e6e6;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+}
+
+.swiper-pagination-bullet-active {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #ff4500 100%);
+    opacity: 1;
+    width: 30px;
+}
+
+.swiper-pagination-bullet:hover {
+    opacity: 0.9;
+    transform: scale(1.1);
+}
+
+/* Анимации */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.swiper-initialized .swiper-slide {
+    animation: slideInUp 0.6s ease-out both;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .popular-swiper {
+        height: 420px;
+        padding: 20px 0 50px;
+    }
+
+    .swiper-slide {
+        width: 280px;
+        height: 380px;
+    }
+
+    .swiper-card .product-image {
+        height: 150px;
+        font-size: 3rem;
+    }
+
+    .swiper-card .product-title {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+    }
+
+    .swiper-card .product-description {
+        font-size: 0.85rem;
+        padding: 0 1rem;
+    }
+
+    .swiper-card .product-price {
+        font-size: 1.3rem;
+        padding: 0 1rem;
+    }
+
+    .swiper-card .product-actions {
+        padding: 0 1rem 1rem;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        width: 40px;
+        height: 40px;
+        margin-top: -20px;
+    }
+
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+        font-size: 16px;
+    }
+
+    .swiper-button-prev {
+        left: 10px;
+    }
+
+    .swiper-button-next {
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .popular-swiper {
+        height: 380px;
+        padding: 15px 0 45px;
+    }
+
+    .swiper-slide {
+        width: 260px;
+        height: 350px;
+    }
+
+    .swiper-card .product-image {
+        height: 130px;
+        font-size: 2.5rem;
+    }
+
+    .swiper-card .product-title {
+        font-size: 1.1rem;
+    }
+
+    .swiper-card .product-description {
+        font-size: 0.8rem;
+    }
+
+    .swiper-card .product-price {
+        font-size: 1.2rem;
+    }
+
+    .swiper-card .btn-add-to-cart {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+
+    .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+    }
+
+    .swiper-pagination-bullet-active {
+        width: 25px;
+    }
+
+    /* Скрываем пагинацию на очень маленьких экранах */
+    @media (max-width: 360px) {
+        .swiper-pagination {
+            display: none !important;
+        }
+    }
+}
