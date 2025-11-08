@@ -1,9 +1,27 @@
-# simple_app.py
 from fastapi import FastAPI
+from fastapi.responses import FileResponse  # Добавьте этот импорт
+from fastapi.staticfiles import StaticFiles
+import os
 from pydantic import BaseModel
 from typing import List
 
 app = FastAPI()
+
+# Убедитесь, что путь правильный, и папка dist/assets существует
+app.mount("/static", StaticFiles(directory="dist/assets"), name="static")
+
+
+
+
+
+
+@app.get("/")
+async def root():
+    # Путь к вашему скомпилированному index.html
+    index_path = os.path.join("dist", "index.html")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
+    return {"detail": "index.html not found"}
 
 # Простые модели Pydantic без БД
 class UserCreate(BaseModel):
@@ -15,15 +33,10 @@ class User(BaseModel):
     name: str
     email: str
 
-# "База данных" в памяти
 fake_users_db = [
     {"id": 1, "name": "John Doe", "email": "john@example.com"},
     {"id": 2, "name": "Jane Smith", "email": "jane@example.com"}
 ]
-
-@app.get("/")
-async def root():
-    return {"message": "Hello, FastAPI! Running without database."}
 
 @app.get("/users/", response_model=List[User])
 async def get_users():
@@ -57,7 +70,4 @@ async def delete_user(user_id: int):
     global fake_users_db
     fake_users_db = [u for u in fake_users_db if u["id"] != user_id]
     return {"message": "User deleted"}
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)
+users_db = fake_users_db
